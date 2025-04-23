@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -8,15 +7,15 @@ import 'package:super_app/my_theme.dart';
 String flavor = '';
 MyTheme? myTheme;
 
-void main() {
-  runZonedGuarded(
-    () async {
-      runApp(const MyApp());
-    },
-    (Object error, StackTrace stack) {
-      print(stack.toString());
-    },
-  );
+Future<void> init(final String flavorParam) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  flavor = flavorParam;
+
+  final String jsonString =
+      await rootBundle.loadString('asset/theme/theme_$flavor.json');
+
+  myTheme = MyTheme.fromJson(jsonDecode(jsonString));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: flavor,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -44,13 +43,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  void initState() {
-    super.initState();
-
-    _init();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -59,19 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(flavor),
       ),
     );
-  }
-
-  Future<void> _init() async {
-    flavor = String.fromEnvironment('flavor', defaultValue: 'appa');
-
-    print('flavor: $flavor');
-
-    final String jsonString =
-        await rootBundle.loadString('asset/theme/theme_$flavor.json');
-
-    myTheme = MyTheme.fromJson(jsonDecode(jsonString));
-
-    setState(() {});
   }
 }
 

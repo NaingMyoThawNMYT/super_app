@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:super_app/main.dart';
+import 'package:super_app/main/main.dart';
 
 class MyTheme {
   final Color primaryColor;

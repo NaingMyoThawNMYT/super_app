@@ -55,11 +55,40 @@
             argument = "--dart-define=flavor=appb"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "flavor=appb"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "flavor"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--dart-define=app_flavor=appb"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "app_flavor=appb"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "app_flavor"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "appb"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = ""
-            value = ""
+            key = "--dart-define=flavor"
+            value = "appb"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "flavor"
+            value = "appb"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
