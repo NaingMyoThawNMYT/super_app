@@ -1,0 +1,62 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.super_app"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.super_app"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+
+    // Define a flavor dimension (optional but recommended for clarity)
+    flavorDimensions "environment" 
+
+    productFlavors {
+        appa {
+            dimension "environment"
+            applicationId "com.example.appa"
+            applicationIdSuffix ".appa" // Optional: Different app ID for dev => com.example.super_app.appa
+            // versionNameSuffix "-appa"   // Optional: Different version name for dev. This will append -dev to the app's version name for the dev build. => version 1.0.0-appa
+            resValue "string", "app_name", "App A" // This will override any default app_name in your strings.xml.
+            resValue "string", "app_icon", "@mipmap/appa" // This will override any default app_name in your strings.xml.
+        }
+
+        appb {
+            dimension "environment"
+            applicationId "com.example.appb"
+            applicationIdSuffix ".appb" // Optional: Different app ID for dev => com.example.super_app.appb
+            // versionNameSuffix "-appb"   // Optional: Different version name for dev. This will append -dev to the app's version name for the dev build.
+            resValue "string", "app_name", "App B" // This will override any default app_name in your strings.xml.
+            resValue "string", "app_icon", "@mipmap/appb" // This will override any default app_name in your strings.xml.
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}

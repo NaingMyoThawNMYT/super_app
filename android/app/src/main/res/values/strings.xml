@@ -1,0 +1,5 @@
+<resources>
+    <!-- The resValue in /app/build.gradle will override this value for each specific flavor. -->
+    <string name="app_name">Super App</string>
+    <string name="app_icon">@mipmap/ic_launcher</string>
+</resources>
