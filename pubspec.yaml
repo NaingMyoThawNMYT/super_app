@@ -34,4 +34,4 @@ flutter:
     - asset/theme/theme_appa.json
     - asset/theme/theme_appb.json
 
-    - asset/image
+    - asset/image/
